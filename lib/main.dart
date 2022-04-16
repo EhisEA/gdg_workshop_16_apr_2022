@@ -133,200 +133,68 @@ class _HomeState extends State<Home> {
           // height: 200,
           child: ListView(
             scrollDirection: Axis.horizontal,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 15.0),
-                child: SizedBox(
-                  height: 60,
-                  width: 60,
-                  child: Stack(
-                    children: [
-                      ClipOval(
-                        child: Container(
-                          color: Colors.brown,
-                          height: 60,
-                          width: 60,
-                          child: Image.asset("assets/1.png"),
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.bottomRight,
-                        child: CircleAvatar(
-                          radius: 14,
-                          backgroundColor: Colors.white,
-                          child: CircleAvatar(
-                            radius: 12,
-                            child: Icon(Icons.add),
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
+            children: const [
+              Profile(
+                image: "assets/1.png",
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 15.0),
-                child: SizedBox(
-                  height: 60,
-                  width: 60,
-                  child: Stack(
-                    children: [
-                      ClipOval(
-                        child: Container(
-                          color: Colors.brown,
-                          height: 60,
-                          width: 60,
-                          child: Image.asset("assets/2.jpg"),
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.bottomRight,
-                        child: CircleAvatar(
-                          radius: 14,
-                          backgroundColor: Colors.white,
-                          child: CircleAvatar(
-                            radius: 12,
-                            child: Icon(Icons.add),
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
+              Profile(
+                image: "assets/2.jpg",
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 15.0),
-                child: SizedBox(
-                  height: 60,
-                  width: 60,
-                  child: Stack(
-                    children: [
-                      ClipOval(
-                        child: Container(
-                          color: Colors.brown,
-                          height: 60,
-                          width: 60,
-                          child: Image.asset(
-                            "assets/4.jpg",
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.bottomRight,
-                        child: CircleAvatar(
-                          radius: 14,
-                          backgroundColor: Colors.white,
-                          child: CircleAvatar(
-                            radius: 12,
-                            child: Icon(Icons.add),
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
+              Profile(
+                image: "assets/4.jpg",
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 15.0),
-                child: SizedBox(
-                  height: 60,
-                  width: 60,
-                  child: Stack(
-                    children: [
-                      ClipOval(
-                        child: Container(
-                          color: Colors.brown,
-                          height: 60,
-                          width: 60,
-                          child: Image.asset(
-                            "assets/5.jpg",
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.bottomRight,
-                        child: CircleAvatar(
-                          radius: 14,
-                          backgroundColor: Colors.white,
-                          child: CircleAvatar(
-                            radius: 12,
-                            child: Icon(Icons.add),
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
+              Profile(
+                image: "assets/5.jpg",
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 15.0),
-                child: SizedBox(
-                  height: 60,
-                  width: 60,
-                  child: Stack(
-                    children: [
-                      ClipOval(
-                        child: Container(
-                          color: Colors.brown,
-                          height: 60,
-                          width: 60,
-                          child: Image.asset(
-                            "assets/6.jpg",
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.bottomRight,
-                        child: CircleAvatar(
-                          radius: 14,
-                          backgroundColor: Colors.white,
-                          child: CircleAvatar(
-                            radius: 12,
-                            child: Icon(Icons.add),
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 15.0),
-                child: SizedBox(
-                  height: 60,
-                  width: 60,
-                  child: Stack(
-                    children: [
-                      ClipOval(
-                        child: Container(
-                          color: Colors.brown,
-                          height: 60,
-                          width: 60,
-                          child: Image.asset("assets/1.png"),
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.bottomRight,
-                        child: CircleAvatar(
-                          radius: 14,
-                          backgroundColor: Colors.white,
-                          child: CircleAvatar(
-                            radius: 12,
-                            child: Icon(Icons.add),
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
+              Profile(
+                image: "assets/6.jpg",
               ),
             ],
           ),
         ),
       ],
     ));
+  }
+}
+
+class Profile extends StatelessWidget {
+  final String image;
+
+  const Profile({Key? key, required this.image}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 15.0),
+      child: SizedBox(
+        height: 60,
+        width: 60,
+        child: Stack(
+          children: [
+            ClipOval(
+              child: Container(
+                color: Colors.brown,
+                height: 60,
+                width: 60,
+                child: Image.asset(
+                  image,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            Align(
+              alignment: Alignment.bottomRight,
+              child: CircleAvatar(
+                radius: 14,
+                backgroundColor: Colors.white,
+                child: CircleAvatar(
+                  radius: 12,
+                  child: Icon(Icons.add),
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }
