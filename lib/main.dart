@@ -1,36 +1,37 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MaterialApp(
+    title: 'Flutter Demo',
+    theme: ThemeData(
+      // This is the theme of your application.
+      //
+      // Try running your application with "flutter run". You'll see the
+      // application has a blue toolbar. Then, withou++t quitting the app, try
+      // changing the primarySwatch below to Colors.green and then invoke
+      // "hot reload" (press "r" in the console where you ran "flutter run",
+      // or simply save your changes to "hot reload" in a Flutter IDE).
+      // Notice that the counter didn't reset back to zero; the application
+      // is not restarted.
+      primarySwatch: Colors.blue,
+    ),
+    home: Home(),
+  ));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  // This widget is the root of your application.
+class Home extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, withou++t quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
-      home: const Home(),
-    );
-  }
+  State<Home> createState() => _HomeState();
 }
 
-class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+class _HomeState extends State<Home> {
+  bool showYellow = true;
+
+  changeYellow() {
+    setState(() {
+      showYellow = !showYellow;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,11 +40,81 @@ class Home extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Expanded(
-          child: Container(
-            color: Colors.red,
-            child: Stack(
-              children: [Image.asset("assets/main.jpg")],
-            ),
+          child: Stack(
+            fit: StackFit.expand,
+            children: [
+              Positioned.fill(
+                child: Image.asset(
+                  "assets/main.jpg",
+                  fit: BoxFit.cover,
+                ),
+              ),
+              Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Colors.transparent,
+                      Colors.transparent,
+                      Colors.black,
+                    ],
+                  ),
+                ),
+              ),
+              Positioned(
+                bottom: 20,
+                left: 0,
+                right: 0,
+                child: Column(
+                  children: [
+                    const Text(
+                      "Emmanuel Ehis",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Text(
+                        "17:23",
+                        style: TextStyle(
+                          color: Colors.grey.shade300,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        CircleAvatar(
+                          backgroundColor: Colors.white.withOpacity(0.2),
+                          child: const Icon(Icons.mic, color: Colors.white),
+                        ),
+                        Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 20),
+                            child: InkWell(
+                              onTap: changeYellow,
+                              child: CircleAvatar(
+                                radius: 25,
+                                backgroundColor:
+                                    showYellow ? Colors.amber : Colors.red,
+                                child: const Icon(Icons.call_end),
+                              ),
+                            )),
+                        CircleAvatar(
+                          backgroundColor: Colors.white.withOpacity(0.2),
+                          child: const Icon(Icons.message, color: Colors.white),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            ],
           ),
         ),
         Container(
@@ -56,7 +127,7 @@ class Home extends StatelessWidget {
         ),
         Container(
           margin: EdgeInsets.only(bottom: 15),
-          color: Colors.green,
+          // color: Colors.green,
           height: 60,
 
           // height: 200,
